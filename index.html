@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTechSoft — Coming Soon</title>
+  <meta name="description" content="BTechSoft website is under development and will be live soon.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --card-bg: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --shadow: 0 12px 36px -10px rgba(15, 23, 42, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+        radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+      background-size: 100% 100%, 100% 100%, 36px 36px;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--text-primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+    }
+
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: #ffffff;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+    }
+
+    .brand-title span {
+      color: var(--accent);
+    }
+
+    /* Main Section / Card */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 580px;
+      margin: 2.5rem auto;
+    }
+
+    .card {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 4rem 3rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 1rem;
+      background: var(--accent-light);
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      border-radius: 9999px;
+      color: var(--accent);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6.5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .description {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 440px;
+      font-weight: 400;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 2rem 1.25rem;
+      }
+      .card {
+        padding: 3rem 1.5rem;
+        border-radius: 20px;
+      }
+      .description {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Brand -->
+  <header>
+    <a href="#" class="brand" aria-label="BTechSoft">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <span class="brand-title">BTech<span>Soft</span></span>
+    </a>
+  </header>
+
+  <!-- Main Hero Card -->
+  <main>
+    <div class="card">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Website Under Development</span>
+      </div>
+
+      <h1>Coming Soon.</h1>
+
+      <p class="description">
+        We are building something new. Our official website will be live soon.
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <span>© <span id="year">2026</span> BTechSoft. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Auto-update copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
