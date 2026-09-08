@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BTechSofts — Coming Soon</title>
-  <meta name="description" content="BTechSofts website is under development and will be live soon.">
+  <title>BTechSofts &mdash; Where Vision Meets Code | Coming Soon</title>
+  <meta name="description" content="Transforming ambitious concepts into robust, scalable software solutions. BTechSofts official platform is launching soon.">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #fafbfc;
-      --card-bg: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #475569;
-      --text-muted: #94a3b8;
-      --border: #e2e8f0;
-      --accent: #2563eb;
-      --accent-light: #eff6ff;
-      --shadow: 0 12px 36px -10px rgba(15, 23, 42, 0.08);
+      --bg-light: #ffffff;
+      --bg-loader: #070a0e;
+      --text-dark: #0e131b;
+      --text-muted: #5e6b7c;
+      --text-light: #94a3b8;
+      --orange: #FF6711;
+      --orange-bright: #ff7f2a;
+      --orange-glow: rgba(255, 103, 17, 0.35);
+      --border-subtle: rgba(14, 19, 27, 0.08);
+      --border-pill: rgba(14, 19, 27, 0.16);
+      --ease-studio: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-curtain: cubic-bezier(0.85, 0, 0.15, 1);
     }
 
     *, *::before, *::after {
@@ -31,223 +34,936 @@
     }
 
     html, body {
+      width: 100%;
       height: 100%;
+      overflow: hidden; /* Single viewport, no scrolling */
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
     }
 
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-primary);
+    /* ============================================================
+       1. MDX ICONIC PRELOADER (First Animation)
+       ============================================================ */
+    .mdx-loader {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-loader);
+      z-index: 1000;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      min-height: 100vh;
-      padding: 3rem 1.5rem;
-      position: relative;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 85% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
-        radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
-      background-size: 100% 100%, 100% 100%, 36px 36px;
-    }
-
-    /* Header */
-    header {
-      width: 100%;
-      max-width: 580px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-    }
-
-    .brand {
-      display: inline-flex;
       align-items: center;
-      gap: 0.875rem;
-      text-decoration: none;
-      color: var(--text-primary);
+      justify-content: center;
+      transition: transform 1s var(--ease-curtain);
+      will-change: transform;
     }
 
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--text-primary);
-      border-radius: 10px;
+    .mdx-loader.lift {
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    .loader-icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      animation: loaderPulse 2.8s ease-in-out infinite alternate;
+    }
+
+    .loader-brand-icon {
+      width: 52px;
+      height: 52px;
+      background: #111822;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 0 35px var(--orange-glow);
     }
 
-    .brand-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: #ffffff;
+    .loader-brand-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--orange);
       fill: none;
       stroke-width: 2.2;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
-    .brand-title {
+    .loader-brand-name {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text-primary);
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #ffffff;
     }
 
-    .brand-title span {
-      color: var(--accent);
+    .loader-brand-name span {
+      color: var(--orange);
     }
 
-    /* Main Section / Card */
-    main {
+    @keyframes loaderPulse {
+      0% { transform: scale(0.98); opacity: 0.85; }
+      100% { transform: scale(1.02); opacity: 1; }
+    }
+
+    .loader-bottom-container {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1440px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .loader-bottom-counter-wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      color: #ffffff;
+    }
+
+    .loader-mask {
+      position: relative;
+      height: 1.5rem;
+      overflow: hidden;
+      min-width: 280px;
+    }
+
+    .loader-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: #94a3b8;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      white-space: nowrap;
+    }
+
+    .loader-text.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dots {
+      display: inline-block;
+      width: 16px;
+      text-align: left;
+    }
+
+    .loader-counter {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+
+    .loader-bottom-bar {
+      width: 100%;
+      height: 2.5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .loader-bottom-scale {
+      width: 0%;
+      height: 100%;
+      background: var(--orange);
+      border-radius: 9999px;
+      box-shadow: 0 0 10px var(--orange);
+      transition: width 0.08s linear;
+    }
+
+    /* ============================================================
+       2. GLOWING AMBER DOME ARCH (Screenshot Exact Background)
+       ============================================================ */
+    .dome-backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .ideas-dome-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-50% + var(--dome-x, 0px)), calc(-46% + var(--dome-y, 0px)));
+      width: min(1040px, 92vw);
+      height: min(580px, 58vh);
+      pointer-events: none;
+      animation: domeFloat 9s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes domeFloat {
+      0% {
+        transform: translate(calc(-50% + var(--dome-x, 0px)), calc(-46% - 10px + var(--dome-y, 0px))) scale(0.985);
+      }
+      50% {
+        transform: translate(calc(-50% + var(--dome-x, 0px)), calc(-46% + 8px + var(--dome-y, 0px))) scale(1.02);
+      }
+      100% {
+        transform: translate(calc(-50% + var(--dome-x, 0px)), calc(-46% - 6px + var(--dome-y, 0px))) scale(0.995);
+      }
+    }
+
+    /* Curved Outline Arch (Matching Screenshot) with continuous breathing glow */
+    .ideas-dome-outline {
+      position: absolute;
+      inset: 0;
+      border-top-left-radius: 520px 290px;
+      border-top-right-radius: 520px 290px;
+      border: 1.2px solid rgba(255, 140, 50, 0.45);
+      border-bottom: none;
+      background: radial-gradient(
+        ellipse at 50% 25%,
+        rgba(255, 120, 30, 0.42) 0%,
+        rgba(255, 150, 60, 0.26) 38%,
+        rgba(255, 190, 110, 0.1) 68%,
+        transparent 88%
+      );
+      filter: blur(1.5px);
+      box-shadow: 0 -8px 45px -10px rgba(255, 103, 17, 0.28);
+      animation: outlinePulse 6s ease-in-out infinite alternate;
+      transition: all 1.2s var(--ease-studio);
+    }
+
+    @keyframes outlinePulse {
+      0% {
+        border-color: rgba(255, 140, 50, 0.35);
+        box-shadow: 0 -6px 30px -10px rgba(255, 103, 17, 0.2);
+      }
+      50% {
+        border-color: rgba(255, 103, 17, 0.65);
+        box-shadow: 0 -14px 60px -5px rgba(255, 103, 17, 0.45);
+      }
+      100% {
+        border-color: rgba(255, 170, 80, 0.45);
+        box-shadow: 0 -8px 40px -8px rgba(255, 103, 17, 0.3);
+      }
+    }
+
+    /* Luminous Core Glow radiating from inside the arch */
+    .ideas-dome-glow {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(680px, 72vw);
+      height: min(440px, 46vh);
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 103, 17, 0.68) 0%,
+        rgba(255, 140, 50, 0.38) 42%,
+        rgba(255, 190, 100, 0.15) 65%,
+        transparent 80%
+      );
+      filter: blur(65px);
+      animation: domePulse 5.5s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+    }
+
+    @keyframes domePulse {
+      0% {
+        transform: translateX(-50%) translateY(0px) scale(0.92);
+        opacity: 0.72;
+      }
+      50% {
+        transform: translateX(-48%) translateY(-12px) scale(1.08);
+        opacity: 0.96;
+      }
+      100% {
+        transform: translateX(-52%) translateY(6px) scale(0.98);
+        opacity: 0.82;
+      }
+    }
+
+    /* Floating Aurora Warm Glow shifting smoothly */
+    .ideas-dome-aurora {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      width: min(520px, 55vw);
+      height: min(320px, 35vh);
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 160, 45, 0.45) 0%,
+        rgba(255, 103, 17, 0.22) 50%,
+        transparent 75%
+      );
+      filter: blur(50px);
+      animation: auroraShift 8.5s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes auroraShift {
+      0% {
+        transform: translate(-62%, -6%) scale(0.9);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-38%, 8%) scale(1.12);
+        opacity: 0.92;
+      }
+      100% {
+        transform: translate(-50%, -2%) scale(1);
+        opacity: 0.75;
+      }
+    }
+
+    /* ============================================================
+       3. APP VIEWPORT & COMING SOON CONTENT
+       ============================================================ */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.25rem 3.5rem 2rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* Top Navbar (Clean Brand Text Only) */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      animation: fadeInDown 0.8s var(--ease-studio) both;
+    }
+
+    .brand-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.2s ease;
+    }
+
+    .brand-logo-text:hover {
+      opacity: 0.85;
+    }
+
+    /* ============================================================
+       CENTER HERO: EXACT SCREENSHOT DESIGN (Coming Soon)
+       ============================================================ */
+    .hero-container {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      max-width: 580px;
-      margin: 2.5rem auto;
+      text-align: center;
+      padding: 1rem 0;
     }
 
-    .card {
-      width: 100%;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 4rem 3rem;
-      text-align: center;
-      box-shadow: var(--shadow);
+    .hero-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      animation: fadeIn 0.6s ease-out;
+      max-width: 1080px;
+      width: 100%;
+      animation: fadeInUp 0.9s var(--ease-studio) 0.15s both;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .status-badge {
+    /* Status Pill */
+    .status-pill {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      padding: 0.45rem 1rem;
-      background: var(--accent-light);
-      border: 1px solid rgba(37, 99, 235, 0.16);
+      padding: 0.35rem 0.95rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 103, 17, 0.22);
       border-radius: 9999px;
-      color: var(--accent);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      margin-bottom: 2rem;
+      color: var(--orange);
+      font-size: 0.775rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 4px 14px rgba(255, 103, 17, 0.1);
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      position: relative;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      background: var(--orange);
+      box-shadow: 0 0 6px var(--orange);
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.85); }
+    .status-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--orange);
+      opacity: 0.6;
+      animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
 
-    h1 {
-      font-size: clamp(2.6rem, 6.5vw, 3.75rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+    @keyframes ping {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+
+    /* Hero Typography */
+    .hero-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      margin-bottom: 0.9rem;
+      width: 100%;
+    }
+
+    .hero-title .title-brand {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 5.6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--text-dark);
+      white-space: nowrap;
+    }
+
+    .hero-title .title-brand .brand-accent {
+      color: var(--orange);
+    }
+
+    .hero-title .title-coming-soon {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4.4vw, 3.9rem);
+      font-weight: 400;
       line-height: 1.1;
-      color: var(--text-primary);
-      margin-bottom: 1.25rem;
+      letter-spacing: -0.04em;
+      color: var(--text-dark);
+      white-space: nowrap;
     }
 
-    .description {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 440px;
+    .hero-title .period {
+      color: var(--orange);
+      display: inline-block;
+      animation: periodGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes periodGlow {
+      0% { transform: scale(1); filter: drop-shadow(0 0 0px transparent); }
+      100% { transform: scale(1.15); filter: drop-shadow(0 0 8px rgba(255, 103, 17, 0.6)); }
+    }
+
+    /* Small Tagline: Where Vision Meets Code (Single Line) */
+    .hero-tagline {
+      font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+      font-weight: 400;
+      color: #64748b;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      margin-bottom: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-tagline .bold-vision {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* Subtitle (Exact copy from Screenshot) */
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.35vw, 1.15rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 580px;
+      margin-bottom: 2.25rem;
       font-weight: 400;
     }
 
-    /* Footer */
-    footer {
-      width: 100%;
-      max-width: 580px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+    .hero-subtitle .sub-bold {
+      color: var(--text-dark);
+      font-weight: 500;
     }
 
-    @media (max-width: 480px) {
-      body {
-        padding: 2rem 1.25rem;
+    .hero-subtitle .sub-highlight {
+      color: #7b8898;
+    }
+
+    /* VIP Early Access Input Field */
+    .notify-form {
+      width: 100%;
+      max-width: 460px;
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-pill);
+      border-radius: 9999px;
+      padding: 0.35rem 0.4rem 0.35rem 1.35rem;
+      box-shadow: 0 16px 36px -10px rgba(14, 19, 27, 0.08);
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .notify-form:focus-within {
+      border-color: var(--orange);
+      box-shadow: 0 0 25px rgba(255, 103, 17, 0.25), 0 16px 36px -10px rgba(14, 19, 27, 0.12);
+    }
+
+    .notify-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      min-width: 0;
+    }
+
+    .notify-input::placeholder {
+      color: var(--text-light);
+    }
+
+    .btn-notify {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.72rem 1.45rem;
+      background: #111822;
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-studio);
+      flex-shrink: 0;
+    }
+
+    .btn-notify:hover {
+      background: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 103, 17, 0.35);
+    }
+
+    .btn-notify svg {
+      width: 13px;
+      height: 13px;
+      stroke: var(--orange);
+      stroke-width: 2.2;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-notify:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    .notify-feedback {
+      position: absolute;
+      bottom: -1.65rem;
+      left: 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .notify-feedback.show { opacity: 1; }
+    .notify-feedback.success { color: #059669; }
+    .notify-feedback.error { color: #dc2626; }
+
+    /* Tags Row */
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+    }
+
+    .tag-item {
+      padding: 0.38rem 0.95rem;
+      border: 1px solid var(--border-pill);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .tag-item:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-1px);
+    }
+
+    /* ============================================================
+       BOTTOM FOOTER (Clean Minimalist: Copyright & Operational)
+       ============================================================ */
+    .footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.825rem;
+      animation: fadeInUp 0.8s var(--ease-studio) both;
+      z-index: 30;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .footer-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    /* Fade Keyframes */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .app-viewport {
+        padding: 1.5rem 1.25rem;
       }
-      .card {
-        padding: 3rem 1.5rem;
-        border-radius: 20px;
+      .hero-title .title-brand {
+        font-size: clamp(2.1rem, 7.8vw, 2.9rem);
+        white-space: normal;
       }
-      .description {
-        font-size: 1rem;
+      .hero-title .title-coming-soon {
+        font-size: clamp(1.75rem, 6.2vw, 2.35rem);
+        white-space: normal;
+      }
+      .hero-tagline {
+        font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+        white-space: normal;
+      }
+      .ideas-dome-wrapper {
+        height: 380px;
+        transform: translate(-50%, -35%);
+      }
+      .footer {
+        justify-content: center;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header / Brand -->
-  <header>
-    <a href="#" class="brand" aria-label="BTechSofts">
-      <div class="brand-icon">
+  <!-- 1. MDX ICONIC PRELOADER (Runs First) -->
+  <div class="mdx-loader" id="mdxLoader">
+    <div class="loader-icon-wrapper">
+      <div class="loader-brand-icon">
         <svg viewBox="0 0 24 24">
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
       </div>
-      <span class="brand-title">BTech<span>Softs</span></span>
-    </a>
-  </header>
-
-  <!-- Main Hero Card -->
-  <main>
-    <div class="card">
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span>Website Under Development</span>
+      <div class="loader-brand-name">
+        BTech<span>Softs</span>
       </div>
-
-      <h1>Coming Soon.</h1>
-
-      <p class="description">
-        We are building something new. Our official website will be live soon.
-      </p>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <span>© <span id="year">2026</span> BTechSofts. All rights reserved.</span>
-  </footer>
+    <div class="loader-bottom-container">
+      <div class="loader-bottom-counter-wrapper">
+        <div class="loader-mask">
+          <span class="loader-text active" data-index="0">Perfection takes a moment<span class="dots">...</span></span>
+          <span class="loader-text" data-index="1">Something special is loading<span class="dots">...</span></span>
+          <span class="loader-text" data-index="2">Brewing your Experience<span class="dots">...</span></span>
+          <span class="loader-text" data-index="3">Great things take time<span class="dots">...</span></span>
+          <span class="loader-text" data-index="4">Worth the wait<span class="dots">...</span></span>
+        </div>
+        <div class="loader-counter" id="loaderCounter">00%</div>
+      </div>
+      <div class="loader-bottom-bar">
+        <div class="loader-bottom-scale" id="loaderBar"></div>
+      </div>
+    </div>
+  </div>
 
+  <!-- 2. GLOWING AMBER DOME ARCH (Screenshot Exact Background) -->
+  <div class="dome-backdrop" aria-hidden="true">
+    <div class="ideas-dome-wrapper" id="domeWrapper">
+      <!-- Curved Outline Arch with subtle amber glow -->
+      <div class="ideas-dome-outline"></div>
+      <!-- Luminous Radial Amber Glow Blooming Outward -->
+      <div class="ideas-dome-glow"></div>
+      <!-- Floating Aurora Warm Glow -->
+      <div class="ideas-dome-aurora"></div>
+    </div>
+  </div>
+
+  <!-- 3. MAIN COMING SOON APP (Shown immediately after loading) -->
+  <div class="app-viewport">
+
+    <!-- Top Navbar (Clean Brand Only) -->
+    <header class="navbar">
+      <a href="#" class="brand-logo-text" aria-label="BTechSofts">
+        BTechSofts
+      </a>
+    </header>
+
+    <!-- Center Hero (Matching User's Screenshot Exactly) -->
+    <main class="hero-container">
+      <div class="hero-content">
+
+        <!-- Status Badge -->
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>In Active Development &bull; Launching Soon</span>
+        </div>
+
+        <!-- Headline: BTechSofts First, then Coming Soon -->
+        <h1 class="hero-title">
+          <span class="title-brand">BTech<span class="brand-accent">Softs</span></span>
+          <span class="title-coming-soon">Coming Soon<span class="period">.</span></span>
+        </h1>
+
+        <!-- Small Tagline: Where Vision Meets Code (Single Line) -->
+        <div class="hero-tagline">
+          Where <strong class="bold-vision">Vision</strong> Meets Code
+        </div>
+
+        <!-- Subtitle Matching Screenshot -->
+        <p class="hero-subtitle">
+          <span class="sub-bold">Transforming ambitious concepts into robust, </span><span class="sub-highlight">scalable software solutions</span>. Our official platform is launching soon.
+        </p>
+
+        <!-- VIP Early Access Input Box -->
+        <form class="notify-form" id="notifyForm" novalidate>
+          <input 
+            type="email" 
+            class="notify-input" 
+            id="userEmail" 
+            placeholder="Enter your work email for priority access..." 
+            required 
+            autocomplete="email"
+          >
+          <button type="submit" class="btn-notify" id="notifySubmitBtn">
+            <span>Notify Me</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </button>
+          <div class="notify-feedback" id="notifyFeedback"></div>
+        </form>
+
+        <!-- Service Capability Badges -->
+        <div class="tags-row">
+          <span class="tag-item">UI/UX Design</span>
+          <span class="tag-item">Custom Software</span>
+          <span class="tag-item">Cloud &amp; DevOps</span>
+          <span class="tag-item">AI &amp; 3D Systems</span>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Bottom Studio Footer (Minimalist) -->
+    <footer class="footer">
+      <div class="footer-left">
+        <span>&copy; <span id="year">2026</span> BTechSofts. All rights reserved.</span>
+        <div class="footer-status">
+          <span class="live-dot"></span>
+          <span>Operational</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
   <script>
     // Auto-update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ============================================================
+       PRELOADER LOGIC (First Animation from mdx.so)
+       ============================================================ */
+    const mdxLoader = document.getElementById('mdxLoader');
+    const loaderCounter = document.getElementById('loaderCounter');
+    const loaderBar = document.getElementById('loaderBar');
+    const loaderTexts = document.querySelectorAll('.loader-text');
+    let textCycleInterval = null;
+
+    function runPreloader() {
+      let textIndex = 0;
+
+      // Cycle text phrases like mdx.so
+      textCycleInterval = setInterval(() => {
+        loaderTexts.forEach(t => t.classList.remove('active'));
+        textIndex = (textIndex + 1) % loaderTexts.length;
+        loaderTexts[textIndex].classList.add('active');
+      }, 500);
+
+      // Digital counter smoothly increments to 100%
+      const startTime = performance.now();
+      const duration = 2400; // ~2.4 seconds
+
+      function updateLoader(currentTime) {
+        const elapsed = currentTime - startTime;
+        const rawProgress = Math.min(elapsed / duration, 1);
+        const easeProgress = Math.pow(rawProgress, 1.25);
+        const percent = Math.floor(easeProgress * 100);
+
+        loaderCounter.textContent = `${percent < 10 ? '0' : ''}${percent}%`;
+        loaderBar.style.width = `${percent}%`;
+
+        if (rawProgress < 1) {
+          requestAnimationFrame(updateLoader);
+        } else {
+          clearInterval(textCycleInterval);
+          loaderCounter.textContent = '100%';
+          loaderBar.style.width = '100%';
+
+          setTimeout(() => {
+            // Curtain lifts directly to the Coming Soon page
+            mdxLoader.classList.add('lift');
+          }, 350);
+        }
+      }
+
+      requestAnimationFrame(updateLoader);
+    }
+
+    // Start on load
+    window.addEventListener('DOMContentLoaded', runPreloader);
+
+    /* ============================================================
+       VIP EMAIL NOTIFY FORM
+       ============================================================ */
+    const form = document.getElementById('notifyForm');
+    const input = document.getElementById('userEmail');
+    const submitBtn = document.getElementById('notifySubmitBtn');
+    const feedback = document.getElementById('notifyFeedback');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = input.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email || !emailRegex.test(email)) {
+        feedback.textContent = 'Please enter a valid work email.';
+        feedback.className = 'notify-feedback show error';
+        input.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.querySelector('span').textContent = 'Confirming...';
+
+      setTimeout(() => {
+        feedback.textContent = "VIP list confirmed! We will notify you on launch day.";
+        feedback.className = 'notify-feedback show success';
+        input.value = '';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        submitBtn.querySelector('span').textContent = 'Joined ✓';
+
+        setTimeout(() => {
+          submitBtn.querySelector('span').textContent = 'Notify Me';
+          feedback.classList.remove('show');
+        }, 5000);
+      }, 400);
+    });
+
+    /* ============================================================
+       CONTINUOUS DOME MOUSE PARALLAX
+       ============================================================ */
+    const domeWrapper = document.getElementById('domeWrapper');
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      const normX = (e.clientX / window.innerWidth - 0.5) * 2;
+      const normY = (e.clientY / window.innerHeight - 0.5) * 2;
+      targetX = normX * 18;
+      targetY = normY * 12;
+    });
+
+    function animateDomeParallax() {
+      currentX += (targetX - currentX) * 0.05;
+      currentY += (targetY - currentY) * 0.05;
+
+      if (domeWrapper) {
+        domeWrapper.style.setProperty('--dome-x', `${currentX.toFixed(2)}px`);
+        domeWrapper.style.setProperty('--dome-y', `${currentY.toFixed(2)}px`);
+      }
+      requestAnimationFrame(animateDomeParallax);
+    }
+    requestAnimationFrame(animateDomeParallax);
   </script>
 </body>
 </html>
